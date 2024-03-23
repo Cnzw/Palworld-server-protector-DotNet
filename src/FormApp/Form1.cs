@@ -482,7 +482,7 @@
         {
             var processName = Path.GetFileNameWithoutExtension(processPath);
             var processes = Process.GetProcessesByName(processName);
-            return processes.Length > 0;
+            return processes.Any(p => p.MainModule.FileName == processPath);
         }
 
         private void selectCmdbutton_Click(object sender, EventArgs e)
